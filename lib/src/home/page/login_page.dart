@@ -56,20 +56,20 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         TextFormField(
                           enabled: true,
+                          autofocus: false,
                           controller: loginController,
                           textAlign: TextAlign.start,
-                          autofocus: false,
                           keyboardType: TextInputType.text,
                           decoration:
                               const InputDecoration(label: Text('Login')),
                         ),
                         TextFormField(
                           enabled: true,
-                          controller: passwordController,
-                          textAlign: TextAlign.start,
                           autofocus: false,
-                          keyboardType: TextInputType.text,
                           obscureText: true,
+                          controller: passwordController,
+                          textAlign: TextAlign.start,                          
+                          keyboardType: TextInputType.text,                          
                           decoration:
                               const InputDecoration(label: Text('Senha')),
                         ),
