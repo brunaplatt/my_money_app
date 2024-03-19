@@ -1,71 +1,87 @@
 import 'package:flutter/material.dart';
-import 'package:my_money_app/src/home/controller/login_controller.dart';
+import 'package:my_money_app/src/home/components/register_link.dart';
+import 'package:my_money_app/src/shared/colors/app_colors.dart';
+import 'package:my_money_app/src/shared/components/app_button.dart';
+import 'package:my_money_app/src/shared/components/app_loading.dart';
+import 'package:my_money_app/src/shared/components/app_logo_title.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key, required this.title});
-  final String title;
+  const LoginPage({super.key});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
+
 class _LoginPageState extends State<LoginPage> {
-  late LoginController loginController;
-  
+  final TextEditingController loginController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
+  bool isLoading = true;
+
   @override
   void initState() {
     super.initState();
-    loginController = LoginController();
+    Future.delayed(
+      const Duration(seconds: 5),
+    ).then((_) => setState(() {
+          isLoading = false;
+        }));
   }
 
-    @override
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Padding(
-        padding: const EdgeInsets.all(10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget> [
-            TextFormField(
-              autofocus: true,
-              keyboardType: TextInputType.number,
-              style: const TextStyle(color: Colors.black, fontSize: 20), 
-              decoration: const InputDecoration(
-                labelText: "Login",
-                labelStyle: TextStyle(color: Colors.black)),
-              ),
-              
-              TextFormField(
-              autofocus: true,
-              obscureText: true,
-              keyboardType: TextInputType.text,
-              style: const TextStyle(color: Colors.black, fontSize: 20), 
-              decoration: const InputDecoration(
-                labelText: "Senha",
-                labelStyle: TextStyle(color: Colors.black)),
-              ),
-              
-              bottomSheet: Container (
-                width: MediaQuery.of(context).size.width,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.rectangle,
-                  color: Colors.white,
-                ),
-                margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                child: ElevatedButton(
-                  onPressed: _reset,
-                  child: const Text("Login",
-                    style: TextStyle(
-                    color: Colors.white,
-                    FontWeight: FontWeight.bold,
-                    ),
+    return isLoading
+        ? const Center(
+            child: AppLoading(),
+          )
+        : Scaffold(
+            backgroundColor: AppColors.appPageBackground,
+            body: SingleChildScrollView(
+              child: SafeArea(
+                  child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    top: 140,
+                    left: 25,
+                    right: 25,
                   ),
+                  child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const AppLogoTitle(
+                          title: 'Login My Money',
+                          iconSize: 80,
+                          titleSize: 20,
+                        ),
+                        TextFormField(
+                          enabled: true,
+                          controller: loginController,
+                          textAlign: TextAlign.start,
+                          autofocus: false,
+                          keyboardType: TextInputType.text,
+                          decoration:
+                              const InputDecoration(label: Text('Login')),
+                        ),
+                        TextFormField(
+                          enabled: true,
+                          controller: passwordController,
+                          textAlign: TextAlign.start,
+                          autofocus: false,
+                          keyboardType: TextInputType.text,
+                          obscureText: true,
+                          decoration:
+                              const InputDecoration(label: Text('Senha')),
+                        ),
+                        Padding(
+                            padding: const EdgeInsets.only(top: 20, bottom: 10),
+                            child: AppButton(action: () {}, label: "Login")),
+                        GestureDetector(
+                            onTap: () {}, child: const RegisterLink()),
+                      ]),
                 ),
-              ),
-          ],
-        ),
-      ),  
-    ),
-  } 
-}   
+              )),
+            ),
+          );
+  }
+}

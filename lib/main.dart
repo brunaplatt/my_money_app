@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:my_money_app/src/home/page/initial_page.dart';
 import 'package:my_money_app/src/home/page/login_page.dart';
+import 'package:my_money_app/src/router/app_router.dart';
 
 void main() {
   runApp(const App());
@@ -11,14 +13,17 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       title: 'My Money',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green,
+        useMaterial3: true,
       ),
-      home: const LoginPage(title: 'My Money'),
+      home: const InitialPage(),
+      debugShowCheckedModeBanner: false,
+      darkTheme: ThemeData.dark(),
+      routes: {
+        AppRouter.login: (context) => const LoginPage(),
+      },
     );
   }
 }
-
-
