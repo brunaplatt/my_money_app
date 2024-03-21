@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_money_app/src/home/components/register_link.dart';
+import 'package:my_money_app/src/modules/components/register_link.dart';
 import 'package:my_money_app/src/shared/colors/app_colors.dart';
 import 'package:my_money_app/src/shared/components/app_button.dart';
 import 'package:my_money_app/src/shared/components/app_loading.dart';
