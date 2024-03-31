@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:my_money_app/src/modules/register/controller/personal_register_controller.dart';
+import 'package:my_money_app/src/router/app_router.dart';
 import 'package:my_money_app/src/shared/colors/app_colors.dart';
 import 'package:my_money_app/src/shared/components/app_button.dart';
 import 'package:my_money_app/src/shared/components/app_loading.dart';
@@ -27,8 +28,7 @@ class _PersonalRegisterPageState extends State<PersonalRegisterPage> {
     controller.loadUser().then((user) {
       fullNameController.text = user.fullName;
       emailController.text = user.email;
-      limitValueController.text =
-          user.limitValue == null ? "0" : user.limitValue.toString();
+      limitValueController.text = user.limitValue.toString();
     });
   }
 
@@ -50,7 +50,11 @@ class _PersonalRegisterPageState extends State<PersonalRegisterPage> {
   void reactsToSendDataSuccess() {
     sendDataReactionDisposer =
         reaction((_) => controller.isSuccess, (bool success) {
-      if (success) Navigator.of(context).pop();
+      if (success) {
+        Navigator.of(context)
+            .pushNamedAndRemoveUntil(AppRouter.home, (route) => false);
+        controller.isLoading = false;
+      }
     });
   }
 
@@ -61,7 +65,7 @@ class _PersonalRegisterPageState extends State<PersonalRegisterPage> {
           backgroundColor: AppColors.appPageBackground,
           elevation: 0,
           leading: IconButton(
-            icon: const Icon(Icons.arrow_back),
+            icon: const Icon(Icons.arrow_back, color: AppColors.logo,),
             onPressed: () => Navigator.pop(context),
           ),
         ),

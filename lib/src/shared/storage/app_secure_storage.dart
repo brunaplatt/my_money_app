@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:my_money_app/src/shared/storage/app_keys.dart';
 

@@ -1,5 +1,3 @@
-// ignore_for_file: library_private_types_in_public_api
-
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 import 'package:my_money_app/src/modules/login/service/login_service.dart';
@@ -17,6 +15,9 @@ abstract class _LoginController with Store {
 
   @observable
   bool isSuccess = false;
+
+  @observable
+  bool isFirstAcess = false;
 
   late String email;
   late String password;
@@ -61,6 +62,11 @@ abstract class _LoginController with Store {
     result.containsKey('success')
         ? setSucess()
         : getException(result['exception']);
+  }
+
+  @action
+  Future<void> verifyFirstAcess() async {
+    isFirstAcess = await service.verifyFirstAcess();
   }
 
   @action

@@ -1,3 +1,7 @@
+
+
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:my_money_app/src/modules/login/model/login_model.dart';
 import 'package:my_money_app/src/modules/login/repositories/login_repository.dart';
@@ -36,7 +40,7 @@ class LoginService {
       String userId = userData['id'];
 
       AppSecureStorage.addItem(Appkeys.auth_token, token);
-      AppSecureStorage.addItem(Appkeys.user, userData.toString());
+      AppSecureStorage.addItem(Appkeys.user, jsonEncode(userData));
       AppSecureStorage.addItem(Appkeys.user_id, userId);
     }
   }
@@ -44,5 +48,13 @@ class LoginService {
   int sendException(Object error) {
     final DioError errorResult = error as DioError;
     return errorResult.response!.data['statusCode'];
+  }
+
+   Future<bool> verifyFirstAcess() async {
+    String? userId = await AppSecureStorage.readItem(Appkeys.user_id);
+
+    Response response = await repository.getGoal(userId!);
+
+    return response.data == '';
   }
 }

@@ -1,9 +1,9 @@
-// ignore_for_file: avoid_print, duplicate_ignore
-
 import 'dart:io';
 
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
+import 'package:my_money_app/src/shared/storage/app_keys.dart';
+import 'package:my_money_app/src/shared/storage/app_secure_storage.dart';
 
 mixin AppDio {
   static Future<Dio> getConnection({bool isAuth = false}) async {
@@ -11,10 +11,8 @@ mixin AppDio {
 
     final Map<String, String> headers = <String, String>{};
 
-    String token =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRoaWFnb3JvbWVuZGVzQGdtYWlsLmNvbSIsInN1YiI6ImFiNzNmOGU5LTFmNzQtNDBhZC04MDhjLTRkMTgzMTcwNDdiNSIsInJvbGVzIjoiYWRtaW5pc3RyYXRvciIsImlhdCI6MTY5MjY2NTE3OSwiZXhwIjoxNzIzNzY5MTc5fQ.yQwHSEtx3sEEQHga-ArOKW5ynF19QxjkyMXe9AClvjY";
-
     if (isAuth) {
+      String? token = await AppSecureStorage.readItem(Appkeys.auth_token);
       headers["Authorization"] = "Bearer $token";
     }
 
@@ -48,7 +46,6 @@ mixin AppDio {
     options.headers["Accept"] = 'application/json';
     options.headers["Content-Type"] = 'application/json';
 
-    // ignore: avoid_print
     print('--------------| Request log |--------------');
     print(options.uri);
   }
