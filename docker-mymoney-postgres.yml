@@ -6,7 +6,7 @@ services:
    ports:
     - 5432:5432
    environment:
-    POSTGRES_PASSWORD: root
+    POSTGRES_PASSWORD: postgres
    networks:
     - postgres-compose-network     
   
