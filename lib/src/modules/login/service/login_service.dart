@@ -1,5 +1,3 @@
-
-
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
@@ -27,7 +25,7 @@ class LoginService {
 
       return {"success": true};
     } on DioError catch (exception) {
-      return {"exception": sendException(exception)};
+      return {"exception": sendException(exception) ?? 500};
     }
   }
 
@@ -45,12 +43,12 @@ class LoginService {
     }
   }
 
-  int sendException(Object error) {
+  int? sendException(Object error) {
     final DioError errorResult = error as DioError;
-    return errorResult.response!.data['statusCode'];
+    return errorResult.response?.data['statusCode'];
   }
 
-   Future<bool> verifyFirstAcess() async {
+  Future<bool> verifyFirstAcess() async {
     String? userId = await AppSecureStorage.readItem(Appkeys.user_id);
 
     Response response = await repository.getGoal(userId!);

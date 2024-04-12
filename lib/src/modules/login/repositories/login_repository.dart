@@ -3,7 +3,7 @@ import 'package:my_money_app/src/http/app_dio.dart';
 import 'package:my_money_app/src/modules/login/model/login_model.dart';
 
 class LoginRepository {
-  String baseURL = "http://192.168.5.133:5432/auth/login";
+  String baseURL = "http://192.168.5.133:3099/auth/login";
 
   Future<Response<Map<String, dynamic>>> sendData(LoginModel loginData) async {
     Dio clientHTTP = await AppDio.getConnection(isAuth: false);
@@ -12,7 +12,7 @@ class LoginRepository {
   }
 
     Future<Response<dynamic>> getGoal(String userId) async {
-    String url = "http://192.168.5.133:5432/goal/findByUser/$userId";
+    String url = "http://192.168.5.133:3099/goal/findByUser/$userId";
 
     Dio clientHTTP = await AppDio.getConnection(isAuth: true);
 
