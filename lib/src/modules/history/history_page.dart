@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_money_app/src/shared/colors/app_colors.dart';
 import 'package:my_money_app/src/shared/components/app_logo_title.dart';
 import 'package:my_money_app/src/shared/components/expense_list.dart';
-import 'package:my_money_app/src/shared/model/expense_model.dart';
+import 'package:my_money_app/src/modules/expense/model/expense_model.dart';
 
 class HistoryPage extends StatelessWidget {
   const HistoryPage({

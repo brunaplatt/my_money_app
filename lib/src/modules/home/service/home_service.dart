@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:my_money_app/src/modules/expense/model/expense_model.dart';
 import 'package:my_money_app/src/modules/home/repositories/home_repository.dart';
 import 'package:my_money_app/src/modules/register/model/personal_register_model.dart';
-import 'package:my_money_app/src/shared/model/expense_model.dart';
 import 'package:my_money_app/src/shared/storage/app_keys.dart';
 import 'package:my_money_app/src/shared/storage/app_secure_storage.dart';
 

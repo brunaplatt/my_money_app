@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_money_app/src/modules/home/components/expense_register_modal.dart';
+import 'package:my_money_app/src/modules/expense/components/expense_register_modal.dart';
 import 'package:my_money_app/src/shared/components/app_modal.dart';
 
 class ExpenseButton {
