@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:my_money_app/src/modules/register/controller/personal_register_controller.dart';
+import 'package:my_money_app/src/modules/personal-register/controller/personal_register_controller.dart';
 import 'package:my_money_app/src/router/app_router.dart';
 import 'package:my_money_app/src/shared/colors/app_colors.dart';
 import 'package:my_money_app/src/shared/components/app_button.dart';

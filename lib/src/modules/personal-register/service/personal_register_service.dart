@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_money_app/src/modules/register/model/personal_register_model.dart';
-import 'package:my_money_app/src/modules/register/repositories/personal_register_repository.dart';
+import 'package:my_money_app/src/modules/personal-register/model/personal_register_model.dart';
+import 'package:my_money_app/src/modules/personal-register/repositories/personal_register_repository.dart';
 import 'package:my_money_app/src/shared/helpers/authenticated_user.dart';
 import 'package:my_money_app/src/shared/model/user_model.dart';
 import 'package:my_money_app/src/shared/model/user_update_model.dart';

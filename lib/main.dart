@@ -3,7 +3,7 @@ import 'package:my_money_app/src/modules/history/history_page.dart';
 import 'package:my_money_app/src/modules/home/page/home_page.dart';
 import 'package:my_money_app/src/modules/initial/initial_page.dart';
 import 'package:my_money_app/src/modules/login/page/login_page.dart';
-import 'package:my_money_app/src/modules/register/page/personal_register_page.dart';
+import 'package:my_money_app/src/modules/personal-register/page/personal_register_page.dart';
 import 'package:my_money_app/src/modules/register/page/register_page.dart';
 import 'package:my_money_app/src/router/app_router.dart';
 

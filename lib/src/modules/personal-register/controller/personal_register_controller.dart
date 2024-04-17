@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
-import 'package:my_money_app/src/modules/register/service/personal_register_service.dart';
+import 'package:my_money_app/src/modules/personal-register/service/personal_register_service.dart';
 import 'package:my_money_app/src/shared/components/app_snackbar.dart';
 import 'package:my_money_app/src/shared/helpers/authenticated_user.dart';
 import 'package:my_money_app/src/shared/model/user_model.dart';
